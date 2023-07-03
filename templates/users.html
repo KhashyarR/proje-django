@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div id="userD">
+    {% for user in user_list %}
+   
+        <div class="post-entry">
+            <h2><a href="{% url 'user_detail' user.pk %}">{{ user.first_name }}</a></h2>
+            <p>{{ user.skills }} </p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Khoshkbar shop{% endblock title %}</title>
+        <link href="{% static 'css/base.css' %}" rel="stylesheet">
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                font-family: Arial;
+            }
+            *{
+                box-sizing: border-box;
+            }
+            header{
+                height: 70%;
+                background: url("{% static 'images/pic01.jpg' %}") no-repeat fixed;
+                background-size: cover;
+            }
+            header h1{
+                text-align: center;
+                color: #FFFFFF;
+                font-size: 40px;
+            }
+            header h2{
+                margin: 0;
+                padding: 100px 0 30px 0;
+                color:#FFF;
+                text-align: center;
+            }
+
+            nav{
+                height: 35px;
+                text-align: center;
+                line-height: 35px;
+            }
+            nav a{
+                display: block;
+                padding: 0 20px;
+                color:#FFF;
+                text-decoration: none;
+            }
+            nav a:hover{
+                text-decoration: underline;
+            }
+            nav ul{
+                margin: 0;
+                padding: 0;
+            }
+            nav ul li{
+                display: inline-block;
+            }
+            nav ul ul{
+                position: absolute;
+                background-color: #39ca85;
+                opacity: 0;
+                visibility: hidden;
+            }
+            nav ul li:hover>ul{
+                opacity: 1;
+                visibility: visible;
+            }
+            nav ul .dropdown:hover>a{
+                background-color: #39ca85;
+                text-decoration: none;
+            }
+
+            nav ul ul li{
+                display: block;
+            }
+            header p{
+                width: 70%;
+                margin: auto;
+                text-align: center;
+                color:#FFF;
+
+            }
+            .login{
+                padding-top: 50px;
+                text-align: center;
+            }
+            .btn{
+                height: 40px;
+                background-color: #39ca85;
+                display: inline-block;
+                padding: 0 40px;
+                line-height: 40px;
+                border-radius: 20px;
+                color:#FFF;
+                text-decoration: none;
+            }
+            .btn:hover{
+                background-color: #46ffad;
+            }
+            .logout{
+                padding-top: 50px;
+                text-align: center;
+            }
+            .logout .btn{
+                height: 40px;
+                background-color: #d73d4f;
+                display: inline-block;
+                padding: 0 40px;
+                line-height: 40px;
+                border-radius: 20px;
+                color:#FFF;
+                text-decoration: none;
+            }
+            .logout .btn:hover{
+                background-color: #ff7181;
+            }
+            .signup{
+                padding-top: 10px;
+                text-align: center;
+            }
+            .signup .btn{
+                height: 40px;
+                background-color: #3d4cd7;
+                display: inline-block;
+                padding: 0 40px;
+                line-height: 40px;
+                border-radius: 20px;
+                color:#FFF;
+                text-decoration: none;
+            }
+            .signup .btn:hover{
+                background-color: #6797f8;
+            }
+            #content{
+                min-height: 400px;
+                padding: 15px 0;
+            }
+            #content h1{
+                color:#555;
+                font-size: 40px;
+                text-align: center;
+                padding: 30px 0;
+                margin: 0;
+            }
+            #content h1 a{
+                text-decoration: none;
+            }
+            .signup1{
+                display: inline-block;
+                position: relative;
+                left: 20%;
+                top: -100px;
+            }
+            #c1{
+                display: inline-block;
+            }
+            #c2{
+                display: inline-block;
+                position: relative;
+                left: 60%;
+            }
+            #userD{
+                margin-left: 70%;
+            }
+            .cont{
+                text-align: left !important;
+            }
+            .cont1{
+                margin-left: 100px; 
+            }
+            .cont1 h1{
+                text-align: left !important;
+            }
+            
+            .cont2 h1{
+                text-align: left !important;
+            }
+            .thumbnail{
+                width: 80%;
+                padding: 0;
+                text-align: center;
+                margin: auto;
+            }
+            .thumbnail li{
+                width: 33.33%;
+                display: inline-block;
+                vertical-align: top;
+            }
+            .thumbnail img{
+                max-width: 100%;
+            }
+            .thumbnail .caption{
+                color:#555;
+                padding: 10px;
+            }
+            .post-entry {
+                margin: 50px;
+                text-align: left;
+            }
+            .post-entry h2 {
+                margin: 10px;
+            }
+            .post-entry h2 a,
+            .post-entry h2 a:visited {
+                color: blue;
+                text-decoration: none;
+            }
+            .post-entry p {
+                margin: auto;
+                font-weight: 400;
+            }
+            .post-entry h2 a:hover {
+                color: red;
+            }
+            footer{
+                height: 400px;
+                background-color: #222834;
+                color:#FFF;
+                padding-top: 30px;
+            }
+            footer .container{
+                width: 80%;
+                margin: auto;
+            }
+            footer hr{
+                border-color:#444;
+                margin: 30px 0;
+            }
+
+            @media only screen and (max-width: 767px){
+                .thumbnail li{
+                    width: 100%;
+                    display: block;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+    <header>
+
+        <h2>Kashayar Rayegan</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'shop' %}">Shop</a></li>
+                <li class="dropdown"><a href="{% url 'product' %}">Products</a>
+                    <ul>
+                        <li><a href="#">Product 1</a></li>
+                        <li><a href="#">Product 2</a></li>
+                        <li><a href="#">Product 3</a></li>
+                        <li><a href="#">Product 4</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'users' %}">Users</a></li>
+            </ul>
+        </nav>
+        <h1>Welcome to Khoshkbar foroshi!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus doloremque excepturi praesentium! Aut dolores, ducimus eligendi error esse facilis fugiat fugit, iure, libero nemo nulla quas quisquam repudiandae sunt vitae.</p>
+        <br><br>
+        {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}!</p>
+        <div class="logout">
+            <p><a href="{% url 'logout' %}" class="btn">Log out</a></p>
+        </div>
+        {% else %}
+        <p>You are not logged in.</p>
+        <div class="login">
+            <a href="{% url 'login' %}" class="btn">Log In</a>
+        </div>
+        <div class="signup">
+            <a href="{% url 'signup' %}" class="btn">Sign Up</a>
+        </div>
+        
+        {% endif %}
+
+       
+        
+    </header>
+    <section id="content">
+        <div id="c1">
+            <div class="cont1"><h1><a href="{% url 'home' %}">stores</a></h1></div>
+            <div class="cont1"><a href="{% url 'post_new' %}">+ New store</a></div>
+        </div>
+        <div id="c2">
+            <div class="cont2"><h1><a href="{% url 'users' %}">users</a></h1></div>
+            <div class="cont2"><a href="{% url 'user_new' %}">+ New user</a></div>
+        </div>
+        <div class="cont">
+            {% block content %}
+    
+            {% endblock content %}
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h1>Document footer type</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, magni.</p>
+
+            <hr>
+
+            copyright 2023 by myself
+        </div>
+    </footer>
+
+    </body>
+</html>
+
